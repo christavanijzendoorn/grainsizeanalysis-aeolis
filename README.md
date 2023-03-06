@@ -1,7 +1,8 @@
 # Grain Size Analysis - AeoLiS
 
 This repository contains the Python code that was used to analyze grain size scenarios presented in:
-LIT REFERENCE
+DISSERTATION CHAPTER REFERENCE
+PAPER REFERENCE
 
 Go through the following steps to reproduce the figures in that publication:
 - download AeoLiS v2.1.0 from https://doi.org/10.4121/22215562
@@ -14,4 +15,4 @@ Additional information about AeoLiS:
 - Github: https://github.com/openearth/aeolis-python
 - Read the docs: https://aeolis.readthedocs.io/en/latest/
 
-The Python code in this repository including its output can be found through LINK.
+The Python code in this repository including its output can be found through https://doi.org/10.4121/22220134.
