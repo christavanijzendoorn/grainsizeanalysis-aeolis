@@ -1,0 +1,18 @@
+	uni_vert = F
+	   uni_x = T
+	   uni_y = T
+	gradient = F
+    mid_gradient = F
+	 patches = F
+
+       base_dist = 1.0 0
+           dist1 = 0 1.0
+     dist1_layer = 1
+
+      start_grad = 
+        mid_grad = 
+        end_grad = 
+    mid_location = 
+
+      patch_dist = 
+      patch_perc = 
