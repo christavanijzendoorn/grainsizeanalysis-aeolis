@@ -11,7 +11,7 @@ Go through the following steps to reproduce the figures in that publication:
 - Use the .py-files in the analysis folder to create the figures that correspond to the different scenarios
 
 Additional information about AeoLiS:
-- Github: 
-- Read the docs: 
+- Github: https://github.com/openearth/aeolis-python
+- Read the docs: https://aeolis.readthedocs.io/en/latest/
 
 The Python code in this repository including its output can be found through LINK.
