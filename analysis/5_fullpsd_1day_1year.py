@@ -17,8 +17,10 @@ from visualization_tools import *
 
 prep_visualize() # sets fonts to larger default sizes
 
-model_directory1 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\GrainSize\scenarios\E_fullPSDs_1day"
-model_directory2 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\GrainSize\scenarios\E_fullPSDs_1year"
+model_directory1 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\grainsizeanalysis-aeolis\scenarios\E_fullPSDs_1day"
+# model_directory1 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\grainsizeanalysis-aeolis\scenarios\E_fullPSDs_1day_Bagnoldgs"
+model_directory2 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\grainsizeanalysis-aeolis\scenarios\E_fullPSDs_1year"
+# model_directory2 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\grainsizeanalysis-aeolis\scenarios\E_fullPSDs_1year_Bagnoldgs"
 
 #%% Define visualization functions
 
@@ -134,7 +136,7 @@ def fluxes_overview_1day_shapesnorm_detailed(model_directory, cases, labels, col
     plt.gcf().text(0.15, 0.31, 'c)', fontsize=16, weight = 'bold')
     
     plt.show()
-    plt.savefig(model_directory + '/../../analysis/figures/' + model_directory[73:] + '.png')         
+    plt.savefig(model_directory + '/../../analysis/figures/' + model_directory[86:] + '_Bagnoldgs.png')         
     
 def fluxes_overview_1year_shapesnorm_detailed(model_directory, cases, labels, colors):
     rhog = 2650
@@ -245,7 +247,8 @@ def fluxes_overview_1year_shapesnorm_detailed(model_directory, cases, labels, co
     plt.gcf().text(0.15, 0.31, 'c)', fontsize=16, weight = 'bold')
     
     plt.show()
-    plt.savefig(model_directory + '/../../analysis/figures/' + model_directory[73:] + '.png')     
+    
+    plt.savefig(model_directory + '/../../analysis/figures/' + model_directory[86:] + '.png') #_Bagnoldgs
 
 #%% Go through all files in directory and visualize for each run
 cases = get_cases(model_directory1)       

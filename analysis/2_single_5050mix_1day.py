@@ -18,7 +18,8 @@ from visualization_tools import *
 
 prep_visualize() # sets fonts to larger default sizes
 
-model_directory1 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\GrainSize\scenarios\B_singlefraction_5050mix_1day"
+model_directory1 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\grainsizeanalysis-aeolis\scenarios\B_singlefraction_5050mix_1day"
+# model_directory1 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\grainsizeanalysis-aeolis\scenarios\B_singlefraction_5050mix_1day_Bagnoldgs"
 
 #%% Define visualization function
 
@@ -66,8 +67,8 @@ def fluxes_overview_withwindandflux(model_directory, cases, labels):
         else:
             ax[2].plot(t, qs_cumsum_all[i], color = colors[i], label = labels[i], linewidth=2)
     ax[2].set_xlim([0, 24])
+    ax[2].set_xlabel('Time (hours)')
     
-    ax[1].set_xlabel('Time (hours)')
     ax[1].set_ylabel('Sediment\nflux (kg/m/s)')
     ax[1].legend(ncol = 2)
     ax[1].set_xlim([0, 24])
@@ -76,7 +77,6 @@ def fluxes_overview_withwindandflux(model_directory, cases, labels):
     ax[0].hlines(calc_ut(0.000250), 0, np.max(t), color = 'silver', label = '250 $\mu$m')
     ax[0].hlines(calc_ut(0.000375), 0, np.max(t), color = 'grey', label = '375 $\mu$m')
     ax[0].hlines(calc_ut(0.000500), 0, np.max(t), color = 'black', label = '500 $\mu$m')
-    ax[0].set_xlabel('Time (hours)')
     ax[0].set_ylabel('Wind\nspeed (m/s)')
     ax[0].set_xlim([0, 24])
     ax[0].set_ylim([0, 30])
@@ -86,8 +86,10 @@ def fluxes_overview_withwindandflux(model_directory, cases, labels):
     plt.gcf().text(0.16, 0.32, 'c)', fontsize=16, weight = 'bold')
         
     plt.show()
-    plt.savefig(model_directory + '/../../analysis/figures/' + 'singlefraction_5050mix_1day.png')    
+    plt.savefig(model_directory + '/../../analysis/figures/' + 'singlefraction_5050mix_1day.png') #Bagnold_gs
     # plt.close()
+    
+    return uw
 
 #%% Visualize overview of single fraction and 50-50% mix behavior during 1 day variable wind
 
@@ -95,4 +97,4 @@ cases = get_cases(model_directory1)
 
 labels = ['250 $\mu$m', '375 $\mu$m', '500 $\mu$m', '250/500\n$\mu$m mix']        
 
-fluxes_overview_withwindandflux(model_directory1, cases, labels)
+uw = fluxes_overview_withwindandflux(model_directory1, cases, labels)

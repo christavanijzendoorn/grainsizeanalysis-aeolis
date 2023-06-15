@@ -19,9 +19,11 @@ from visualization_tools import *
 
 prep_visualize() # sets fonts to larger default sizes
 
-model_directory1 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\GrainSize\scenarios\F_crossshore_10mins"
-model_directory2 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\GrainSize\scenarios\F_crossshore_1day"
-model_directory3 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\GrainSize\scenarios\F_crossshore_1year"
+model_directory1 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\grainsizeanalysis-aeolis\scenarios\F_crossshore_10mins"
+# model_directory1 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\grainsizeanalysis-aeolis\scenarios\F_crossshore_10mins_Bagnoldgs"
+model_directory2 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\grainsizeanalysis-aeolis\scenarios\F_crossshore_1day"
+# model_directory2 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\grainsizeanalysis-aeolis\scenarios\F_crossshore_1day_Bagnoldgs"
+model_directory3 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\grainsizeanalysis-aeolis\scenarios\F_crossshore_1year"
 
 labels = ['coarse-fine', 'fine-coarse', 'fine-coarse-fine']
 colors = ['royalblue', 'forestgreen', 'goldenrod']
@@ -84,7 +86,7 @@ def fluxes_overview_crossshore(model_directory, cases, labels, colors, vmin, vma
                 puf = ax[2+i].pcolor(pickup_fine.T, cmap = ListedColormap(['none']), hatch = '\\\\\\', edgecolor='white', lw = 0., label = 'pickup fine') # (t, y, x, frac)
                 puc = ax[2+i].pcolor(pickup_coarse.T, cmap = ListedColormap(['none']), hatch = '///', edgecolor='white', lw = 0., label = 'pickup coarse')
 
-                print(np.nansum(pickup_fine))
+                # print(np.nansum(pickup_fine))
                 if '1day' in cases[i]:
                     ax[2+i].set_xticks([0, 30, 60, 90, 120])
                     ax[2+i].set_xticklabels([0, 5, 10, 15, 20])
@@ -142,7 +144,7 @@ def fluxes_overview_crossshore(model_directory, cases, labels, colors, vmin, vma
     plt.gcf().text(0.14, 0.215, 'e)', fontsize=16, weight = 'bold')
     
     plt.show()
-    plt.savefig(model_directory + '/../../analysis/figures/' + model_directory[73:] + '.png')     
+    plt.savefig(model_directory + '/../../analysis/figures/' + model_directory[86:] + '.png') #_Bagnoldgs
 
 #%% Visualization on 10-minute scale
 

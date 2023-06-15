@@ -56,7 +56,8 @@ def calc_Q(uw, d, z0):
 
 #%%% Visualize transport for range of single fraction cases, including subplot with shear velocities 
     
-model_directory = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\GrainSize\scenarios\A_singlefraction_10mins"
+model_directory = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\grainsizeanalysis-aeolis\scenarios\A_singlefraction_10mins"
+# model_directory = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\grainsizeanalysis-aeolis\scenarios\A_singlefraction_10mins_Bagnoldgs"
 cases = get_cases(model_directory) 
     
 fig1, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))  
@@ -97,10 +98,21 @@ ax1.set_ylabel('Cumulative sediment\nflux ($m^3$/m)')
         
 d_ini = [50, 75, 110, 150, 195,  235,  285,  345,  420,  505,  615,  745, 900, 1100, 1325, 1600, 2000]
 d = [dx*1e-6 for dx in d_ini]
-u = [10, 12.5 , 15]
+u = [7.5, 10, 12.5]
+
+left, bottom, width, height = [0.21, 0.4, 0.15, 0.2]
+ax_inset = fig1.add_axes([left, bottom, width, height])
+
+ax_inset.plot(uw, sorted(flux_250), 'o-', color = 'silver', markersize=4, label = '250 $\mu$m')               
+ax_inset.plot(uw, sorted(flux_375), 'o-', color = 'grey', markersize=4, label = '375 $\mu$m')    
+ax_inset.plot(uw, sorted(flux_500), 'o-', color = 'k', markersize=4, label = '500 $\mu$m') 
+
+ax_inset.set_xlim([7.5,12.5])
+ax_inset.set_ylim([-0.0001, 0.0005])
+ax_inset.set_yticklabels(['0', '0','5e-4'])
 
 colors2 = ['silver', 'darkgrey', 'grey', 'black']
-labels2 = ['u$_w$ = 10 m/s', 'u$_w$ = 12.5 m/s', 'u$_w$ = 15 m/s']
+labels2 = ['u$_w$ = 7.5 m/s', 'u$_w$ = 10 m/s', 'u$_w$ = 12.5 m/s']
 # Calculate (u star - u star th) - gs dependent, varying d
 ustar_ar = np.zeros((3,17))
 ustar_th_ar = []
@@ -113,23 +125,25 @@ for j, gs in enumerate(d):
     ustar_th = calc_ustar_th(gs)
     ustar_th_ar.append(ustar_th)
     
-ax2.plot(d_ini, sorted(ustar_th_ar), '-o', color = 'red', markersize=4, label = 'u$_{*, th}$')  
+ax2.plot(d_ini, sorted(ustar_th_ar), '-o', color = 'red', markersize=4, label = 'u$_{*, t}$')  
 ax2.plot([0.2],  marker='None', linestyle='None', label='u$_*$ based on:')             
-ax2.plot(d_ini, sorted(ustar_ar[0,:]), '-o', color = 'silver', markersize=4, label = 'u$_w$ = 10 m/s')    
-ax2.plot(d_ini, sorted(ustar_ar[1,:]), '-o', color = 'grey', markersize=4, label = 'u$_w$ = 12.5 m/s')           
-ax2.plot(d_ini, sorted(ustar_ar[2,:]), '-o', color = 'k', markersize=4, label = 'u$_w$ = 15 m/s')           
+ax2.plot(d_ini, sorted(ustar_ar[0,:]), '-o', color = 'silver', markersize=4, label = 'u$_w$ = 7.5 m/s')    
+ax2.plot(d_ini, sorted(ustar_ar[1,:]), '-o', color = 'grey', markersize=4, label = 'u$_w$ = 10 m/s')           
+ax2.plot(d_ini, sorted(ustar_ar[2,:]), '-o', color = 'k', markersize=4, label = 'u$_w$ = 12.5 m/s')           
     
+ax2.set_ylim([-0.03, 0.57])
+
 ax2.set_xlabel('Grain size ($\mu$m)')
 ax2.set_ylabel('Shear velocity (m/s)')
 ax2.legend()
 
 h,l = ax2.get_legend_handles_labels()
 by_label = dict(zip(l, h))
-ax2.legend(by_label.values(), by_label.keys())
+ax2.legend(by_label.values(), by_label.keys(), loc='lower right', fontsize = 12)
 
 plt.gcf().text(0.16, 0.9, 'a)', fontsize=16, weight = 'bold')
 plt.gcf().text(0.61, 0.9, 'b)', fontsize=16, weight = 'bold')
                     
-plt.savefig(model_directory + '/../../analysis/figures/' + 'singlefraction_10mins.png')
+plt.savefig(model_directory + '/../../analysis/figures/' + 'singlefraction_10mins.png') #_Bagnoldgs
 
 

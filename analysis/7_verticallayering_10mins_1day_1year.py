@@ -19,9 +19,10 @@ from visualization_tools import *
 
 prep_visualize() # sets fonts to larger default sizes
 
-model_directory1 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\GrainSize\scenarios\M_verticallayering_10mins"
-model_directory2 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\GrainSize\scenarios\M_verticallayering_1day"
-model_directory3 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\GrainSize\scenarios\M_verticallayering_1year"
+model_directory1 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\grainsizeanalysis-aeolis\scenarios\M_verticallayering_10mins"
+# model_directory2 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\grainsizeanalysis-aeolis\scenarios\M_verticallayering_1day"
+model_directory2 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\grainsizeanalysis-aeolis\scenarios\M_verticallayering_1day_Bagnoldgs"
+model_directory3 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\grainsizeanalysis-aeolis\scenarios\M_verticallayering_1year"
 
 labels = ['1$^{st}$ coarse', '4$^{th}$ coarse']
 colors = ['royalblue', 'forestgreen']
@@ -228,7 +229,7 @@ def fluxes_overview_verticallayering(model_directory, cases, labels, colors, vmi
     plt.gcf().text(0.14, 0.255, 'd)', fontsize=16, weight = 'bold')
     
     plt.show()
-    plt.savefig(model_directory + '/../../analysis/figures/' + model_directory[73:] + '.png')     
+    plt.savefig(model_directory + '/../../analysis/figures/' + model_directory[88:] + '.png')     
 
 #%% Visualization on 10-minute scale
 cases = get_cases(model_directory1)

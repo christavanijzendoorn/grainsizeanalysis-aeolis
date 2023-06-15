@@ -17,7 +17,8 @@ from visualization_tools import *
 
 prep_visualize() # sets fonts to larger default sizes
 
-model_directory1 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\GrainSize\scenarios\C_8020mixes_1year"
+model_directory1 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\grainsizeanalysis-aeolis\scenarios\C_8020mixes_1year"
+# model_directory1 = r"C:\Users\cijzendoornvan\Documents\DuneForce\AEOLIS\grainsizeanalysis-aeolis\scenarios\C_8020mixes_1year_Bagnoldgs"
 
 #%% Define visualization function
 
@@ -120,7 +121,7 @@ def fluxes_overview_1yr_D50mix(model_directory, cases, labels, colors, vmin, vma
     plt.gcf().text(0.13, 0.33, 'c)', fontsize=16, weight = 'bold')
 
     plt.show()
-    plt.savefig(model_directory + '/../../analysis/figures/' + '8020mixes_1year.png')    
+    plt.savefig(model_directory + '/../../analysis/figures/' + '8020mixes_1year.png') #_Bagnoldgs
 
 #%% Go through all files in directory and visualize for each run
 cases = get_cases(model_directory1)       
